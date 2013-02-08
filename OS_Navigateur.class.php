@@ -2,6 +2,269 @@
 
 class OS_Navigateur {
     
+    private $lvc_OS = array(
+        'Win95' => 'Win 95',
+        'Win98' => 'Win98',
+        'Win98' => 'Win 9x',
+        'Win98' => 'Win9x',
+        'WinNT' => 'Win NT',
+        'WinNT' => 'WinNT4.0',
+        'WinMe' => 'Win Me',
+        'WinXP' => 'Win XP',
+        'Win2000' => 'Win 2000',
+        'Linux' => 'Linux',
+        'Mac PPC' => 'Mac PPC',
+        'PPC Mac' => 'PPC Mac',
+        'SunOS' => 'SunOS'
+    );
+
+
+    private $lvc_agent = array(
+        'AOL' => 'AOL Explorer;',
+        'Internet Explorer' => 'IE;',
+        'Netscape' => 'NS;',
+        'Opera' => 'OP;',
+        'Firefox' => 'Firefox',
+        'Firebird' => 'Firebird',
+        'AppleWebKit' => 'AppleWebKit',
+        'Safari' => 'Safari',
+        'Konqueror' => 'Konqueror',
+        'Mozilla' => 'Mozilla'
+    );
+
+    private $lvc_other_agt = array(
+        'Lynx' => 'Lynx - Linux',
+        'WWWOFFLE' => 'WWWOFFLE - Linux',
+        'Konqueror' => 'Konqueror - Linux'
+    );
+
+    private $lvc_agent_versions = array(
+        'AOL' => array(
+            '9.0'
+	),
+        'NS' => array(
+            '4.8',
+            '4.76',
+            '4.75',
+            '4.74',
+            '4.73',
+            '4.72',
+            '4.71',
+            '4.7',
+            '4.61',
+            '4.6',
+            '4.51',
+            '4.5',
+            '4.08',
+            '4.07',
+            '4.06',
+            '4.05',
+            '4.04',
+            '4.03'
+	),
+        'NS6' => array(
+            '8.1',
+            '8.0.1',
+            '7.2',
+            '7.1',
+            '7.02',
+            '7.01',
+            '7.0',
+            '7.1',
+            '6.2.3',
+            '6.2.2',
+            '6.2',
+            '6.1',
+            '6.0',
+            '6.1',
+            'm14',
+            'm17',
+            'm18'
+	),
+        'Firebird' => array(
+            '0.7'
+	),
+        'Firebird' => array(
+            '0.7'
+	),
+        'Konqueror' => array(
+            '3.2'
+	),
+        'Mozilla' => array(
+            'rv:1.7.10',
+            '1.7.10',
+            'rv:1.7.8',
+            '1.7.8',
+            '1.7.3',
+            '1.7',
+            '1.4'
+	),
+        'AppleWebKit' => array(
+            '1.7.5',
+            '1.7.3',
+            '1.6',
+            '1.0.2'
+	),
+        'Safari' => array(
+            '530.19',
+            '525.27.1',
+            '419.3',
+            '417.9.3',
+            '417.9.2',
+            '85.5',
+            '85.6',
+            '85.8',
+            '85.8.1',
+            '417.8',
+            '416.12',
+            '412',
+            '312',
+            '125.12',
+            '125.1',
+            '125.9',
+            '125.8'
+	),
+        'Camino' => array(
+            '0.8.4',
+            '0.8.3',
+            '0.8.2',
+            '0.8.1',
+            '0.8int'
+	)
+    );
+    private $lvc_agent_os = array(
+        'IE' => array(
+            'Windows 95' => 'Win95',
+            'Win32'=> 'Win95',
+            'Win 9x 4.90'=> 'WinMe',
+            'Windows 98' => 'Win98',
+            'Windows NT 5.0' => 'Win2000',
+            'Windows NT 5.1' => 'WinXP',
+            'Windows NT 5.2' => 'Windows Server 2003',
+            'Windows NT 6.0' => 'WinVista',
+            'Windows NT 6.1' => 'WinSeven',
+            'Windows NT' => 'WinNT',
+            'Mac PowerPC'=> 'Mac PPC',
+            'Mac PPC'=> 'Mac PPC',
+            'SunOS'=> 'SunOS'
+	),
+        'NS' => array(
+            'Win95'=> 'Win95',
+            'Win 9x 4.90'=> 'WinMe',
+            'Win98'=> 'Win98',
+            'WinNT'=> 'WinNT',
+            'Windows NT 5.0' => 'Win2000',
+            'Windows NT 5.1' => 'WinXP',
+            'Windows NT 5.2' => 'Windows Server 2003',
+            'Windows NT 6.0' => 'WinVista',
+            'Windows NT 6.1' => 'WinSeven',
+            'Windows NT' => 'WinNT',
+            'Linux'=> 'Linux',
+            'SunOS'=> 'SunOS',
+            'PPC'=> 'Mac PPC',
+            'FreeBSD'=> 'FreeBSD',
+            'AIX'=> 'AIX',
+            'IRIX'=> 'IRIX',
+            'HP-UX'=> 'HP-UX',
+            'OS/2'=> 'OS/2',
+            'NetBSD' => 'NetBSD'
+	),
+        'NS6' => array(
+            'Win95'=> 'Win95',
+            'Win 9x 4.90'=> 'WinMe',
+            'Win98'=> 'Win98',
+            'WinNT'=> 'WinNT',
+            'Windows NT 5.0' => 'Win2000',
+            'Windows NT 5.1' => 'WinXP',
+            'Windows NT 5.2' => 'Windows Server 2003',
+            'Windows NT 6.0' => 'WinVista',
+            'Windows NT 6.1' => 'WinSeven',
+            'Windows NT' => 'WinNT',
+            'Linux'=> 'Linux',
+            'SunOS'=> 'SunOS',
+            'PPC'=> 'Mac PPC',
+            'FreeBSD'=> 'FreeBSD',
+            'AIX'=> 'AIX',
+            'IRIX'=> 'IRIX',
+            'HP-UX'=> 'HP-UX',
+            'OS/2'=> 'OS/2',
+            'NetBSD' => 'NetBSD'
+	),
+        'OP' => array(
+            'Windows 95' => 'Win95',
+            'Windows 98' => 'Win98',
+            'Windows 2000'=> 'Win2000',
+            'Win 9x 4.90'=> 'WinMe',
+            'Windows NT 5.0' => 'Win2000',
+            'Windows NT 5.1' => 'WinXP',
+            'Windows NT 5.2' => 'Windows Server 2003',
+            'Windows NT 6.0' => 'WinVista',
+            'Windows NT 6.1' => 'WinSeven',
+            'Windows NT' => 'WinNT',
+            'Linux'=> 'Linux'
+        ),
+        'Firefox' => array(
+            'Windows 95' => 'Win95',
+            'Windows 98' => 'Win98',
+            'Win98' => 'Win98',
+            'Windows 2000'=> 'Win2000',
+            'Win 9x 4.90'=> 'WinMe',
+            'Windows NT 5.0' => 'Win2000',
+            'Windows NT 5.1' => 'WinXP',
+            'Windows NT 5.2' => 'Windows Server 2003',
+            'Windows NT 6.0' => 'WinVista',
+            'Windows NT 6.1' => 'WinSeven',
+            'Windows NT' => 'WinNT',
+            'WinNT4.0' => 'WinNT',
+            'Linux'=> 'Linux',
+            'Mac OS X' => 'Mac OS X',
+            'FreeBSD' => 'FreeBSD',
+            'SunOS'=> 'SunOS'
+        ),
+        'Mozilla' => array(
+            'Windows 95' => 'Win95',
+            'Windows 98' => 'Win98',
+            'Win98' => 'Win98',
+            'Windows 2000'=> 'Win2000',
+            'Win 9x 4.90'=> 'WinMe',
+            'Windows NT 5.0' => 'Win2000',
+            'Windows NT 5.1' => 'WinXP',
+            'Windows NT 5.2' => 'Windows Server 2003',
+            'Windows NT 6.0' => 'WinVista',
+            'Windows NT 6.1' => 'WinSeven',
+            'Windows NT' => 'WinNT',
+            'Linux'=> 'Linux',
+            'Mac OS X' => 'Mac OS X',
+            'FreeBSD' => 'FreeBSD',
+            'SunOS'=> 'SunOS'
+        ),
+        'Firebird' => array(
+            'Windows 95' => 'Win95',
+            'Windows 98' => 'Win98',
+            'Windows 2000'=> 'Win2000',
+            'Win 9x 4.90'=> 'WinMe',
+            'Windows NT 5.0' => 'Win2000',
+            'Windows NT 5.1' => 'WinXP',
+            'Windows NT 5.2' => 'Windows Server 2003',
+            'Windows NT 6.0' => 'WinVista',
+            'Windows NT 6.1' => 'WinSeven',
+            'Windows NT' => 'WinNT',
+            'Linux'=> 'Linux',
+            'Mac OS X' => 'Mac OS X',
+            'SunOS'=> 'SunOS'
+        ),
+        'Safari' => array(
+            'Mac OS X' => 'Mac OS X'
+        ),
+        'Konqueror' => array(
+            'Linux'=> 'Linux'
+        ),
+        'Camino' => array(
+            'Mac OS X' => 'Mac OS X',
+            'PPC Mac OS X Mach-O' => 'Mac OS X'
+        )
+    );
+    
     private $agt;
     private $new_agt;
     private $lvc_agent_max_length = 300;
@@ -76,12 +339,12 @@ class OS_Navigateur {
     private function Aol() {
         $this->new_agt = 'AOL Explorer';
         $this->agt = strtr($this->agt, '_', ' ');
-        for ($cnt = 0, $ok = false; $cnt < sizeof($lvc_agent_versions['AOL']) && !$ok; $cnt++)
+        for ($cnt = 0, $ok = false; $cnt < sizeof($this->lvc_agent_versions['AOL']) && !$ok; $cnt++)
         {
-                if ($ok = strpos($this->agt, $lvc_agent_versions['AOL'][$cnt]))
+                if ($ok = strpos($this->agt, $this->lvc_agent_versions['AOL'][$cnt]))
                 {
-                        $this->new_agt .= '-'.$lvc_agent_versions['AOL'][$cnt];
-                        for (@reset($lvc_agent_os['AOL']), $ok = false; (list($key, $value) = @each($lvc_agent_os['AOL'])) && !$ok;)
+                        $this->new_agt .= '-'.$this->lvc_agent_versions['AOL'][$cnt];
+                        for (@reset($this->lvc_agent_os['AOL']), $ok = false; (list($key, $value) = @each($this->lvc_agent_os['AOL'])) && !$ok;)
                         {
                                 if ($ok = ereg($key, $this->agt))
                                         $this->new_agt .= '  '.$value;
@@ -94,7 +357,7 @@ class OS_Navigateur {
         $this->new_agt = 'IE';
         $this->new_agt .= '-'.preg_replace('`^.*MSIE ([0-9]*(\.[0-9]*)*).*$`si','$1',$this->agt);
 
-        for (@reset($lvc_agent_os['IE']), $ok = false; (list($key, $value) = @each($lvc_agent_os['IE'])) && !$ok;)
+        for (@reset($this->lvc_agent_os['IE']), $ok = false; (list($key, $value) = @each($this->lvc_agent_os['IE'])) && !$ok;)
         {
                 if ($ok = ereg($key, $this->agt))
                         $this->new_agt .= '  '.$value;
@@ -105,7 +368,7 @@ class OS_Navigateur {
         $this->new_agt = 'Opera';
         $this->new_agt .= '-'.preg_replace('`^.*Version/([0-9]*(\.[0-9]*)*).*$`si','$1',$this->agt);
 
-        for (@reset($lvc_agent_os['OP']), $ok = false; (list($key, $value) = @each($lvc_agent_os['OP'])) && !$ok;)
+        for (@reset($this->lvc_agent_os['OP']), $ok = false; (list($key, $value) = @each($this->lvc_agent_os['OP'])) && !$ok;)
         {
                 if ($ok = ereg($key, $this->agt))
                         $this->new_agt .= '  '.$value;
@@ -113,12 +376,12 @@ class OS_Navigateur {
     }
     private function Netscape() {
         $this->new_agt = 'NS';
-        for ($cnt = 0, $ok = false; $cnt < sizeof($lvc_agent_versions['NS']) && !$ok; $cnt++)
+        for ($cnt = 0, $ok = false; $cnt < sizeof($this->lvc_agent_versions['NS']) && !$ok; $cnt++)
         {
-                if ($ok = strpos($this->agt, $lvc_agent_versions['NS'][$cnt]))
+                if ($ok = strpos($this->agt, $this->lvc_agent_versions['NS'][$cnt]))
                 {
-                        $this->new_agt .= '-'.$lvc_agent_versions['NS'][$cnt];
-                        for (@reset($lvc_agent_os['NS']), $ok = false; (list($key, $value) = @each($lvc_agent_os['NS'])) && !$ok;)
+                        $this->new_agt .= '-'.$this->lvc_agent_versions['NS'][$cnt];
+                        for (@reset($this->lvc_agent_os['NS']), $ok = false; (list($key, $value) = @each($this->lvc_agent_os['NS'])) && !$ok;)
                         {
                                 if ($ok = ereg($key, $this->agt))
                                         $this->new_agt .= '  '.$value;
@@ -132,7 +395,7 @@ class OS_Navigateur {
         $this->new_agt = 'Safari';
         $this->new_agt .= '-'.preg_replace('`^.*Version/([0-9]*(\.[0-9]*)*).*$`si','$1',$this->agt);
 
-        for (@reset($lvc_agent_os['Safari']), $ok = false; (list($key, $value) = @each($lvc_agent_os['Safari'])) && !$ok;)
+        for (@reset($this->lvc_agent_os['Safari']), $ok = false; (list($key, $value) = @each($this->lvc_agent_os['Safari'])) && !$ok;)
         {
                 if ($ok = ereg($key, $this->agt))
                 $this->new_agt .= '  '.$value;
@@ -140,10 +403,10 @@ class OS_Navigateur {
         
     }
     private function Firefox() {
-        $this->new_agt = 'Firefox';
-        $this->new_agt .= '-'.preg_replace('`^.*Firefox/([0-9]*(\.[0-9]*)*).*$`si','$1',$this->agt);
+        $this->new_agt = 'Firefox ';
+        $this->new_agt .= preg_replace('`^.*Firefox/([0-9]*(\.[0-9]*)?([a|b][0-9]*(pre)?)?).*$`si','$1',$this->agt);
 
-        for (@reset($lvc_agent_os['Firefox']); (list($key, $value) = @each($lvc_agent_os['Firefox'])) && !$ok;)
+        for (@reset($this->lvc_agent_os['Firefox']); (list($key, $value) = @each($this->lvc_agent_os['Firefox'])) && !$ok;)
         {
                 if ($ok = ereg($key, $this->agt))
                         $this->new_agt .= '  '.$value;
@@ -152,12 +415,12 @@ class OS_Navigateur {
     }
     private function NS6() {
         $this->new_agt = 'Netscape';
-        for ($cnt = 0, $ok = false; $cnt < sizeof($lvc_agent_versions['NS6']) && !$ok; $cnt++)
+        for ($cnt = 0, $ok = false; $cnt < sizeof($this->lvc_agent_versions['NS6']) && !$ok; $cnt++)
         {
-                if ($ok = strpos($this->agt, $lvc_agent_versions['NS6'][$cnt]))
+                if ($ok = strpos($this->agt, $this->lvc_agent_versions['NS6'][$cnt]))
                 {
-                        $this->new_agt .= '-'.$lvc_agent_versions['NS6'][$cnt];
-                        for (@reset($lvc_agent_os['NS']), $ok = false; (list($key, $value) = @each($lvc_agent_os['NS'])) && !$ok;)
+                        $this->new_agt .= '-'.$this->lvc_agent_versions['NS6'][$cnt];
+                        for (@reset($this->lvc_agent_os['NS']), $ok = false; (list($key, $value) = @each($this->lvc_agent_os['NS'])) && !$ok;)
                         {
                                 if ($ok = ereg($key, $this->agt))
                                         $this->new_agt .= '  '.$value;
@@ -169,12 +432,12 @@ class OS_Navigateur {
     }
     private function Mozilla() {
         $this->new_agt = 'Mozilla';
-        for ($cnt = 0, $ok = false; $cnt < sizeof($lvc_agent_versions['Mozilla']) && !$ok; $cnt++)
+        for ($cnt = 0, $ok = false; $cnt < sizeof($this->lvc_agent_versions['Mozilla']) && !$ok; $cnt++)
         {
-                if ($ok = strpos($this->agt, $lvc_agent_versions['Mozilla'][$cnt]))
+                if ($ok = strpos($this->agt, $this->lvc_agent_versions['Mozilla'][$cnt]))
                 {
-                        $this->new_agt .= '-'.$lvc_agent_versions['Mozilla'][$cnt];
-                        for (@reset($lvc_agent_os['Mozilla']), $ok = false; (list($key, $value) = @each($lvc_agent_os['Mozilla'])) && !$ok;)
+                        $this->new_agt .= '-'.$this->lvc_agent_versions['Mozilla'][$cnt];
+                        for (@reset($this->lvc_agent_os['Mozilla']), $ok = false; (list($key, $value) = @each($this->lvc_agent_os['Mozilla'])) && !$ok;)
                         {
                                 if ($ok = ereg($key, $this->agt))
                                         $this->new_agt .= '  '.$value;
